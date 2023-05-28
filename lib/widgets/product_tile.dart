@@ -1,14 +1,21 @@
+import 'package:final_tpm/pages/product_page.dart';
 import 'package:flutter/material.dart';
 import 'package:final_tpm/theme.dart';
 
+import '../models/product_model.dart';
+
 class ProductTile extends StatelessWidget {
-  const ProductTile({super.key});
+  final ProductModel product;
+  const ProductTile({super.key, required this.product});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, '/product');
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => ProductPage(product: product)));
       },
       child: Container(
         margin: EdgeInsets.only(
@@ -16,8 +23,8 @@ class ProductTile extends StatelessWidget {
         child: Row(children: [
           ClipRRect(
               borderRadius: BorderRadius.circular(20),
-              child: Image.asset(
-                'assets/image_shoes.png',
+              child: Image.network(
+                product.galleries![0].url!,
                 width: 120,
                 height: 120,
                 fit: BoxFit.cover,
@@ -30,11 +37,11 @@ class ProductTile extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Football',
+                  product.category!.name!,
                   style: secondaryTextStyle.copyWith(fontSize: 12),
                 ),
                 Text(
-                  'Adidas',
+                  product.name!,
                   style: primaryTextStyle.copyWith(
                       fontSize: 16, fontWeight: semiBold),
                 ),
@@ -42,7 +49,7 @@ class ProductTile extends StatelessWidget {
                   height: 6,
                 ),
                 Text(
-                  'IDR 1.200.000',
+                  'IDR ${product.price}',
                   style:
                       priceTextStyle.copyWith(fontSize: 14, fontWeight: medium),
                 ),

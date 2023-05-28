@@ -16,10 +16,13 @@ class ProfilePage extends StatelessWidget {
             padding: EdgeInsets.all(defaultMargin),
             child: Row(
               children: [
-                ClipOval(
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(100),
                   child: Image.asset(
-                    'assets/image_profile.png',
+                    'assets/profil_penulis.jpg',
                     width: 64,
+                    height: 64,
+                    fit: BoxFit.cover,
                   ),
                 ),
                 SizedBox(
@@ -30,12 +33,12 @@ class ProfilePage extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Hallo, Alex',
+                        'Agung Prayogi',
                         style: primaryTextStyle.copyWith(
                             fontSize: 24, fontWeight: semiBold),
                       ),
                       Text(
-                        '@alexkeinn',
+                        '123200085',
                         style: subtitleTextStyle.copyWith(fontSize: 16),
                       ),
                     ],

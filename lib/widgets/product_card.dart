@@ -1,14 +1,21 @@
+import 'package:final_tpm/models/product_model.dart';
 import 'package:flutter/material.dart';
 import 'package:final_tpm/theme.dart';
 
+import '../pages/product_page.dart';
+
 class ProductCard extends StatelessWidget {
-  const ProductCard({super.key});
+  final ProductModel product;
+  ProductCard({super.key, required this.product});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, '/product');
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => ProductPage(product: product)));
       },
       child: Container(
         margin: EdgeInsets.only(left: defaultMargin),
@@ -33,7 +40,7 @@ class ProductCard extends StatelessWidget {
                         topRight: Radius.circular(20),
                       ),
                       image: DecorationImage(
-                        image: AssetImage('assets/image_shoes.png'),
+                        image: NetworkImage(product.galleries![0].url!),
                       ),
                     ),
                   ),
@@ -46,7 +53,7 @@ class ProductCard extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Hiking',
+                          product.category!.name!,
                           style: secondaryTextStyle.copyWith(
                             fontSize: 12,
                           ),
@@ -55,18 +62,19 @@ class ProductCard extends StatelessWidget {
                           height: 6,
                         ),
                         Text(
-                          'COURT VISION 2.0',
+                          product.name!,
                           style: blackTextStyle.copyWith(
                             fontSize: 18,
                             fontWeight: semiBold,
                           ),
                           overflow: TextOverflow.ellipsis,
+                          maxLines: 1,
                         ),
                         SizedBox(
                           height: 6,
                         ),
                         Text(
-                          'IDR 799.000',
+                          'IDR ${product.price}',
                           style: priceTextStyle.copyWith(
                             fontSize: 14,
                             fontWeight: medium,

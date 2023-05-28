@@ -1,11 +1,18 @@
+import 'package:final_tpm/providers/wishlist_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:final_tpm/theme.dart';
+import 'package:provider/provider.dart';
+
+import '../models/product_model.dart';
 
 class WishlistCard extends StatelessWidget {
-  const WishlistCard({super.key});
+  final ProductModel product;
+  const WishlistCard({super.key, required this.product});
 
   @override
   Widget build(BuildContext context) {
+    WishlistProvider wishlistProvider = Provider.of<WishlistProvider>(context);
+
     return Container(
       margin: EdgeInsets.only(top: 20),
       padding: EdgeInsets.only(
@@ -22,8 +29,8 @@ class WishlistCard extends StatelessWidget {
         children: [
           ClipRRect(
               borderRadius: BorderRadius.circular(20),
-              child: Image.asset(
-                'assets/image_shoes.png',
+              child: Image.network(
+                product.galleries![0].url!,
                 width: 120,
                 height: 120,
                 fit: BoxFit.cover,
@@ -36,11 +43,11 @@ class WishlistCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Football',
+                  product.category!.name!,
                   style: secondaryTextStyle.copyWith(fontSize: 12),
                 ),
                 Text(
-                  'Adidas',
+                  product.name!,
                   style: primaryTextStyle.copyWith(
                       fontSize: 16, fontWeight: semiBold),
                 ),
@@ -48,16 +55,21 @@ class WishlistCard extends StatelessWidget {
                   height: 6,
                 ),
                 Text(
-                  'IDR 1.200.000',
+                  'IDR ${product.price}',
                   style:
                       priceTextStyle.copyWith(fontSize: 14, fontWeight: medium),
                 ),
               ],
             ),
           ),
-          Image.asset(
-            'assets/button_wishlist_enable.png',
-            width: 34,
+          GestureDetector(
+            onTap: () {
+              wishlistProvider.setProduct(product);
+            },
+            child: Image.asset(
+              'assets/button_wishlist_enable.png',
+              width: 34,
+            ),
           ),
         ],
       ),

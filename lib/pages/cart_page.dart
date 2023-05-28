@@ -1,23 +1,19 @@
+import 'package:final_tpm/providers/cart_provider.dart';
 import 'package:final_tpm/widgets/cart_card.dart';
 import 'package:flutter/material.dart';
 import 'package:final_tpm/theme.dart';
+import 'package:provider/provider.dart';
 
 class CartPage extends StatelessWidget {
   const CartPage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    CartProvider cartProvider = Provider.of<CartProvider>(context);
+
     Widget header() {
       return AppBar(
-        leading: IconButton(
-          icon: Icon(
-            Icons.arrow_back_ios,
-            color: primaryTextColor,
-          ),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
+        automaticallyImplyLeading: false,
         backgroundColor: backgroundColor1,
         centerTitle: true,
         title: Text(
@@ -80,7 +76,8 @@ class CartPage extends StatelessWidget {
     Widget content() {
       return ListView(
         padding: EdgeInsets.symmetric(horizontal: defaultMargin),
-        children: [CartCard()],
+        children:
+            cartProvider.carts.map((cart) => CartCard(cart: cart)).toList(),
       );
     }
 
@@ -95,7 +92,7 @@ class CartPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text('Subtotal', style: primaryTextStyle),
-                  Text('IDR 799.000',
+                  Text('IDR ${cartProvider.totalPrice()}',
                       style: priceTextStyle.copyWith(
                           fontWeight: semiBold, fontSize: 16)),
                 ],
@@ -146,8 +143,9 @@ class CartPage extends StatelessWidget {
       backgroundColor: backgroundColor3,
       appBar:
           PreferredSize(preferredSize: Size.fromHeight(50), child: header()),
-      body: content(),
-      bottomNavigationBar: customBottomNav(),
+      body: cartProvider.carts.length == 0 ? emptyCart() : content(),
+      bottomNavigationBar:
+          cartProvider.carts.length == 0 ? SizedBox() : customBottomNav(),
     );
   }
 }
