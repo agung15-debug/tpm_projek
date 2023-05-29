@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:final_tpm/providers/currency_provider.dart';
 import 'package:final_tpm/providers/product_provider.dart';
 import 'package:final_tpm/theme.dart';
 import 'package:flutter/material.dart';
@@ -16,6 +17,7 @@ class _SplashPageState extends State<SplashPage> {
   @override
   void getInit() async {
     await Provider.of<ProductProvider>(context, listen: false).getProducts();
+    await Provider.of<CurrencyProvider>(context, listen: false).getCurrencies();
     Navigator.pushNamed(context, '/sign-in');
   }
 

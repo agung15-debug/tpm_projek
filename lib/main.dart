@@ -5,6 +5,7 @@ import 'package:final_tpm/pages/checkout_success_page.dart';
 import 'package:final_tpm/pages/timezone_page.dart';
 import 'package:final_tpm/providers/auth_provider.dart';
 import 'package:final_tpm/providers/cart_provider.dart';
+import 'package:final_tpm/providers/currency_provider.dart';
 import 'package:final_tpm/providers/product_provider.dart';
 import 'package:final_tpm/providers/transaction_provider.dart';
 import 'package:final_tpm/providers/wishlist_provider.dart';
@@ -32,7 +33,8 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => ProductProvider()),
         ChangeNotifierProvider(create: (context) => WishlistProvider()),
         ChangeNotifierProvider(create: (context) => CartProvider()),
-        ChangeNotifierProvider(create: (context) => TransactionProvider())
+        ChangeNotifierProvider(create: (context) => TransactionProvider()),
+        ChangeNotifierProvider(create: (context) => CurrencyProvider()),
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
