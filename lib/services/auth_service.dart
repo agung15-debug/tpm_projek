@@ -5,6 +5,7 @@ import 'package:http/http.dart' as http;
 
 class AuthService {
   String baseUrl = 'https://tpm.luxspace.my.id/api';
+  String? token;
 
   Future<UserModel> register({
     required String name,
@@ -52,6 +53,7 @@ class AuthService {
       var data = jsonDecode(response.body)['data'];
       UserModel user = UserModel.fromJson(data['user']);
       user.token = 'Bearer ' + data['access_token'];
+      token = user.token;
       return user;
     } else {
       throw Exception('Gagal Login');

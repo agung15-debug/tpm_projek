@@ -1,3 +1,4 @@
+import 'package:final_tpm/pages/money_converter.dart';
 import 'package:flutter/material.dart';
 import 'package:final_tpm/theme.dart';
 
@@ -105,8 +106,16 @@ class ProfilePage extends StatelessWidget {
                   Navigator.pushNamed(context, '/kesan-pesan');
                 },
                 child: menuItem('Kesan Pesan')),
-            menuItem('Money Converter'),
-            menuItem('Timezone'),
+            GestureDetector(
+                onTap: () {
+                  Navigator.pushNamed(context, '/currency-converter');
+                },
+                child: menuItem('Money Converter')),
+            GestureDetector(
+                onTap: () {
+                  Navigator.pushNamed(context, '/timezone');
+                },
+                child: menuItem('Timezone')),
           ],
         ),
       ));

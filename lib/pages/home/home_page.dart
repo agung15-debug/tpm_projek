@@ -78,7 +78,7 @@ class HomePage extends StatelessWidget {
                 border: Border.all(color: subtitleColor),
               ),
               child: Text(
-                'Running',
+                'Shirt',
                 style: subtitleTextStyle.copyWith(
                     fontSize: 13, fontWeight: medium),
               ),
@@ -92,7 +92,7 @@ class HomePage extends StatelessWidget {
                 border: Border.all(color: subtitleColor),
               ),
               child: Text(
-                'Training',
+                'Jeans',
                 style: subtitleTextStyle.copyWith(
                     fontSize: 13, fontWeight: medium),
               ),
@@ -106,7 +106,7 @@ class HomePage extends StatelessWidget {
                 border: Border.all(color: subtitleColor),
               ),
               child: Text(
-                'Basketball',
+                'Blazer',
                 style: subtitleTextStyle.copyWith(
                     fontSize: 13, fontWeight: medium),
               ),
@@ -120,7 +120,7 @@ class HomePage extends StatelessWidget {
                 border: Border.all(color: subtitleColor),
               ),
               child: Text(
-                'Hiking',
+                'Jacket',
                 style: subtitleTextStyle.copyWith(
                     fontSize: 13, fontWeight: medium),
               ),

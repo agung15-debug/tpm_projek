@@ -15,24 +15,17 @@ class ProductPage extends StatefulWidget {
 }
 
 class _ProductPageState extends State<ProductPage> {
-  final List images = [
-    'assets/image_shoes.png',
-    'assets/image_shoes.png',
-    'assets/image_shoes.png'
-  ];
-
   int currentIndex = 0;
 
   final List familiarProducts = [
-    'assets/image_shoes.png',
-    'assets/image_shoes.png',
-    'assets/image_shoes.png',
-    'assets/image_shoes.png',
-    'assets/image_shoes.png',
-    'assets/image_shoes.png',
-    'assets/image_shoes.png',
-    'assets/image_shoes.png',
-    'assets/image_shoes.png',
+    'assets/product_image1.jpg',
+    'assets/product_image2.jpg',
+    'assets/product_image3.jpg',
+    'assets/product_image4.jpg',
+    'assets/product_image5.jpg',
+    'assets/product_image6.jpg',
+    'assets/product_image7.jpg',
+    'assets/product_image8.jpg',
   ];
 
   @override

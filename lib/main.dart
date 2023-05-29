@@ -1,7 +1,8 @@
 import 'package:final_tpm/pages/cart_page.dart';
 import 'package:final_tpm/pages/checkout_page.dart';
-import 'package:final_tpm/pages/product_page.dart';
+import 'package:final_tpm/pages/money_converter.dart';
 import 'package:final_tpm/pages/checkout_success_page.dart';
+import 'package:final_tpm/pages/timezone_page.dart';
 import 'package:final_tpm/providers/auth_provider.dart';
 import 'package:final_tpm/providers/cart_provider.dart';
 import 'package:final_tpm/providers/product_provider.dart';
@@ -45,6 +46,8 @@ class MyApp extends StatelessWidget {
           '/cart': (context) => CartPage(),
           '/checkout': (context) => CheckoutPage(),
           '/checkout-success': (context) => CheckoutSuccessPage(),
+          '/currency-converter': (context) => CurrencyConverterPage(),
+          '/timezone': (context) => TimezonePage(),
         },
       ),
     );
